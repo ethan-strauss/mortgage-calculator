@@ -30,12 +30,13 @@ form.addEventListener("submit", function(event) {
     const interest = (rate / 100) / 12;
     const totalPayments = years * 12;
     let monthlyPayment;
+    let monthlyTaxes = taxes / 12;
 
     if (rate === 0){
-        monthlyPayment =( amount / totalPayments) + utilities + hoa + taxes;
+        monthlyPayment =( amount / totalPayments) + monthlyTaxes + hoa + utilities;
     } else {
         const factor = Math.pow(1 + interest, totalPayments);
-        monthlyPayment = amount * (interest * factor) / (factor - 1) + utilities + hoa + taxes;
+        monthlyPayment = amount * (interest * factor) / (factor - 1) + utilities + hoa + monthlyTaxes;
     }
     result.textContent = "Monthly Payment: $" + monthlyPayment.toFixed(2);
 
