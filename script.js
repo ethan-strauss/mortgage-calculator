@@ -13,7 +13,7 @@ form.addEventListener("submit", function(event) {
     const rate = parseFloat(inputRate.value);
     const years = parseFloat(inputYears.value);
     let taxes = parseFloat(inputTaxes.value);
-    if(NaN(taxes)){
+    if(isNaN(taxes)){
         taxes = 0
     };
 
@@ -32,7 +32,7 @@ form.addEventListener("submit", function(event) {
     let monthlyPayment;
 
     if (rate === 0){
-        monthlyPayment =( amount / totalPayments) + utilities + hoa;
+        monthlyPayment =( amount / totalPayments) + utilities + hoa + taxes;
     } else {
         const factor = Math.pow(1 + interest, totalPayments);
         monthlyPayment = amount * (interest * factor) / (factor - 1) + utilities + hoa + taxes;
